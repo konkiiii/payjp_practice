@@ -1,6 +1,5 @@
 const pay = () => {
-  const payjp = Payjp('pk_test_***********************')// PAY.JPテスト公開鍵
-  // 後で環境変数に設定する
+  const payjp = Payjp(process.env.PAYJP_PUBLIC_KEY)
   const elements = payjp.elements();
   const numberElement = elements.create('cardNumber');
   const expiryElement = elements.create('cardExpiry');

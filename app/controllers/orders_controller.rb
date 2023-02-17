@@ -21,8 +21,7 @@ class OrdersController < ApplicationController
     params.require(:order).permit(:price).merge(token: params[:token])
   end
   def pay_item
-    Payjp.api_key = "sk_test_***********" #PAY.JPテスト秘密鍵
-    #push気をつける
+    Payjp.api_key = Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
       amount: order_params[:price],
       card: order_params[:token],
